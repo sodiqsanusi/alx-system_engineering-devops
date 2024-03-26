@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Install Nginx on a remote server, while setting it up with custom config
-sudo apt-get -y install nginx
-sudo ufw allow 'Nginx HTTP'
-sudo ufw enable
-sudo echo "Hello World" > /var/www/html/index.nginx-debian.html
+sudo su <<EOF
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+ufw enable
+echo "Hello World" > /var/www/html/index.nginx-debian.html
+EOF
