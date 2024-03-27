@@ -5,14 +5,6 @@ package { 'installNginx':
   name   => 'nginx',
 }
 
-exec { 'enableFirewall':
-  command => 'sudo ufw enable',
-}
-
-exec { 'listenToHttpPort':
-  command => 'sudo ufw allow "Nginx HTTP"',
-}
-
 file { 'setRootPage':
   ensure  => present,
   path    => '/var/www/html/index.nginx-debian.html',
