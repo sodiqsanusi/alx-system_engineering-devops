@@ -2,9 +2,9 @@
 # This is to configure a server to use HAProxy as a load balancers
 # The servers used here are personal Nginx web servers
 apt-get -y update
-apt-get install --no-install-recommends software-properties-common
-add-apt-repository ppa:vbernat/haproxy-2.8
-apt-get install haproxy=2.8.\*
+apt-get -y install --no-install-recommends software-properties-common
+add-apt-repository -y ppa:vbernat/haproxy-2.8
+apt-get -y install haproxy=2.8.\*
 sed -i 's|ENABLED=0|ENABLED=1|' /etc/default/haproxy
 cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
 sed -i '$s|$|\n\nlisten appname *:80\n\tmode http\n\tbalance roundrobin\n\toption httpclose\n\toption forwardfor\n\tserver 520228-web-01 100.25.102.91:80 check\n\tserver 520228-web-02 100.26.241.139:80 check|' /etc/haproxy/haproxy.cfg
