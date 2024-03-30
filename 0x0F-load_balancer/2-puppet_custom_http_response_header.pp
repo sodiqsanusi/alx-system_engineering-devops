@@ -1,17 +1,17 @@
 # Setup Nginx server with some custom header response
 package { 'nginx':
-  ensure     => 'installed',
+  ensure => installed,
 }
 
 file_line { 'aaaaa':
-  ensure => 'present',
+  ensure => present,
   path   => '/etc/nginx/sites-available/default',
   after  => 'listen 80 default_server;',
   line   => 'rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;',
 }
 
 file_line { 'b':
-  ensure  => 'present',
+  ensure  => present,
   path    => '/etc/nginx/sites-available/default',
   after   => 'listen 80 default_server;',
   line    => 'add_header X-Served-By $HOSTNAME;',
@@ -23,6 +23,8 @@ file { '/var/www/html/index.html':
 }
 
 service { 'nginx':
-  ensure  => running,
-  require => Package['nginx'],
+  ensure    => running,
+  enable    => true,
+  hasstatus => true,
+  require   => Package['nginx'],
 }
