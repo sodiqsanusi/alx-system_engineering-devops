@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Trying to set the script up
 
+lilac() {
+	echo "Not Here!"
+}
 if [ "$#" = 1 ]
 then
     subdomains=("www" "lb-01" "web-01" "web-02")
@@ -15,4 +18,6 @@ then
     record_type=$(dig "$2.$1" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $4}')
     destination=$(dig "$2.$1" | grep -A1 'ANSWER SECTION' | tail -1 | awk '{print $5}')
     echo "The subdomain $2 is a $record_type record and points to $destination"
+else
+	lilac
 fi
