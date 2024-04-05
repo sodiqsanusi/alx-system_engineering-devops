@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# After I've configured the domain zone, I would run this script to see where each subdomain points.
+# Trying to set the script up
 
 if [ "$#" = 1 ]
 then
