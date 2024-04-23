@@ -2,6 +2,7 @@
 """
 Use the requests module to make a request to an employee REST API
     The request takes in an integer that serves as the employee ID
+    Exports data as a CSV file
 """
 import csv
 import requests
