@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-'''
+"""
 A module containing functions for working with the Reddit API.
-'''
+"""
 import requests
 
 
 BASE_URL = 'https://www.reddit.com'
 
+
 def number_of_subscribers(sub_name):
-    '''Retrieves the number of subscribers in a given subreddit.
-    '''
+    """
+    Retrieves the number of subscribers in a given subreddit.
+    """
     api_headers = {
         'Accept': 'application/json',
         'User-Agent': ' '.join([
